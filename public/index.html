@@ -41,11 +41,12 @@
         subject: e.target.subject.value,
         message: e.target.message.value,
       };
-      const res = await fetch('http://localhost:3001/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+      const res = await fetch('/api/contact', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(formData)
+});
+
       if (res.ok) {
         document.getElementById('response').classList.remove('hidden');
         e.target.reset();
