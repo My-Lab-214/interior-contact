@@ -5,29 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url(https://images.pexels.com/photos/2079246/pexels-photo-2079246.jpeg);
+    }
+
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+  </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
 
-  <div class="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
+  <div class="max-w-3xl mx-auto p-6 glass-effect mt-10 mb-10 text-[#3B2F2F]">
     <h2 class="text-3xl font-bold mb-6 text-center">Contact for Design</h2>
     <form id="contactForm" class="space-y-4">
       <div>
-        <label for="name" class="block font-medium">Name</label>
-        <input type="text" id="name" name="name" required class="w-full px-4 py-2 border rounded-lg" />
+        <label for="name" class="block font-semibold text-lg text-black mb-1 ml-1.4">Name</label>
+        <input type="text" id="name" name="name" required class="w-full px-4 py-2 border rounded-lg bg-white/50 text-black text-lg" />
       </div>
       <div>
-        <label for="email" class="block font-medium">Email</label>
-        <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded-lg" />
+        <label for="email" class="block font-semibold text-lg text-black mb-1 ml-1.4">Email</label>
+        <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded-lg bg-white/50 text-black text-lg" />
       </div>
       <div>
-        <label for="subject" class="block font-medium">Subject</label>
-        <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 border rounded-lg" />
+        <label for="subject" class="block font-semibold text-lg text-black mb-1 ml-1.4">Subject</label>
+        <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 border rounded-lg bg-white/50 text-black text-lg" />
       </div>
       <div>
-        <label for="message" class="block font-medium">Message</label>
-        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 border rounded-lg"></textarea>
+        <label for="message" class="block font-semibold text-lg text-black mb-1 ml-1.4">Message</label>
+        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 border rounded-lg bg-white/50 text-black text-lg"></textarea>
       </div>
-      <button type="submit" class="bg-black text-white px-6 py-2 rounded hover:bg-gray-800">Send</button>
+      <button type="submit" class="bg-[#3B2F2F] text-white px-6 py-2 rounded hover:bg-[#2d2323]">Send</button>
     </form>
     <p id="response" class="text-green-600 mt-4 text-center hidden">Message sent!</p>
   </div>
@@ -42,10 +59,10 @@
         message: e.target.message.value,
       };
       const res = await fetch('/api/contact', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(formData)
-});
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
 
       if (res.ok) {
         document.getElementById('response').classList.remove('hidden');
